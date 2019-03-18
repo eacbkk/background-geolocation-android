@@ -102,11 +102,9 @@ public class ActivityRecognitionLocationProvider extends AbstractLocationProvide
         if (isTracking) { return; }
 
         Integer priority = translateDesiredAccuracy(mConfig.getDesiredAccuracy());
-        LocationRequest locationRequest = LocationRequest.create()
-                .setPriority(priority) // this.accuracy
-                .setFastestInterval(mConfig.getFastestInterval())
-                .setInterval(mConfig.getInterval());
-        // .setSmallestDisplacement(mConfig.getStationaryRadius());
+        LocationRequest locationRequest = LocationRequest.create().setPriority(priority) // this.accuracy
+                .setFastestInterval(mConfig.getFastestInterval()).setInterval(mConfig.getInterval())
+                .setSmallestDisplacement(mConfig.getStationaryRadius());
         try {
             LocationServices.FusedLocationApi.requestLocationUpdates(googleApiClient, locationRequest, this);
             isTracking = true;
